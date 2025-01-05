@@ -5,12 +5,12 @@ with open('README.rst') as file:
     long_description = file.read()
 
 setup(name='MIDIUtil',
-      version='HEAD',
+      version='1.3.1',
       description='A pure python library for creating multi-track MIDI files',
-      author='Mark Conway Wirt',
-      author_email='MarkCWirt@gmail.com',
+      author='Mark Conway Wirt et al',
+      author_email='runanashi@ymail.ne.jp',
       license='MIT',
-      url='https://github.com/MarkCWirt/MIDIUtil',
+      url='https://github.com/goutsune/MIDIUtil',
       packages=find_packages(where="src"),
       package_dir = {'': 'src'},
       package_data={

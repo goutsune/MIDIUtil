@@ -666,6 +666,27 @@ class MIDITrack(object):
                                       annotation=annotation,
                                       insertion_order=insertion_order))
 
+    def addNoteOn(self, channel, pitch, tick, volume,
+                  annotation=None, insertion_order=0):
+        '''
+        Add a note-on event manually.
+        '''
+
+        # Duration argument to NoteOn instance is used only for __str__ method
+        # But use -1 to make manually created events distinguishable
+        self.eventList.append(NoteOn(channel, pitch, tick, -1, volume,
+                                     annotation=annotation,
+                                     insertion_order=insertion_order))
+
+    def addNoteOff(self, channel, pitch, tick, volume,
+                   annotation=None, insertion_order=0):
+        '''
+        Add a note-off event manually.
+        '''
+        self.eventList.append(NoteOff(channel, pitch, tick, volume,
+                                      annotation=annotation,
+                                      insertion_order=insertion_order))
+
     def addControllerEvent(self, channel, tick, controller_number, parameter,
                            insertion_order=0):
         '''
@@ -992,7 +1013,7 @@ class MIDIFile(object):
             before writing to disk
         :param deinterleave: If set to ``True`` deinterleave the notes in
             the stream
-        :param adjust_origin: If set to ``True`` shift all the events in the tracks 
+        :param adjust_origin: If set to ``True`` shift all the events in the tracks
             so that the first event takes place at time t=0. Default is ``False``
         :param file_format: The format of the multi-track file. This should
             either be ``1`` (the default, and the most widely supported
