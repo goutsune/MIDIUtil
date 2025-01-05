@@ -132,11 +132,11 @@ class NoteOff (GenericEvent):
     '''
     evtname = 'NoteOff'
     midi_status = 0x80  # 0x8x is Note Off
-    sec_sort_order = 2  # must be less than that of NoteOn
+    sec_sort_order = 4  # must be more than that of NoteOn
     # If two events happen at the same time, the secondary sort key is
     # ``sec_sort_order``. Thus a class of events can be processed earlier than
     # another. One place this is used in the code is to make sure that note
-    # off events are processed before note on events.
+    # off events are processed after note on events.
 
     def __init__(self, channel, pitch, tick, volume,
                  annotation=None, insertion_order=0):
